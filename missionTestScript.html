@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test Command and Payload</title>
+  <meta property="og:title" content="Test Command and Payload" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Inter;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: #000;
+      background-color: #fff;
+
+    }
+  </style>
+  <style>
+    .home-container {
+      width: 100%;
+      display: flex;
+      overflow: auto;
+      min-height: 100vh;
+      align-items: center;
+      padding-top: 32px;
+      padding-left: 32px;
+      padding-right: 32px;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .home-button {
+      align-self: flex-start;
+    }
+
+    .button {
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-color: grey;
+      border-width: 1px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      background-color: rgb(99, 115, 243);
+    }
+
+    .Heading {
+      font-size: 32px;
+      font-family: Inter;
+      font-weight: 700;
+      line-height: 1.15;
+      text-transform: none;
+      text-decoration: none;
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <script type="text/javascript">
+    function getMobileOperatingSystem() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+      }
+
+      if (/android/i.test(userAgent)) {
+        return "Android";
+      }
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+      }
+      return "unknown";
+    }
+
+    function sendMessage(data) {
+      let json = JSON.stringify(data)
+      let platForm = getMobileOperatingSystem()
+      console.log(json)
+      if (platForm == "Android") {
+        nativeInterface.onRetrievePayloadString(json)
+      } else {
+        window.webkit.messageHandlers.nativeInterface.postMessage(json)
+      }
+    }
+
+    function sendMessageBindCard(data) {
+      let json = JSON.stringify(data)
+      let platForm = getMobileOperatingSystem()
+      console.log(json)
+      if (platForm == "Android") {
+        nativeInterfaceBindCard.getBindCardProfile(json)
+      } else {
+        window.webkit.messageHandlers.nativeInterface.postMessage(json)
+      }
+    }
+
+    function callBackToPrevious() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "BACK"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callBiller() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "PTP_BILLER_LIST"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callTopup() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "PTP_TOPUP_LIST"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callPlayCardHome() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "PTP_PLAYCARD_HOME"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callScanQR() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "PTP_SCAN_QR"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callGANew() {
+      try {
+        const payload = {
+          "ga": {
+            "event": {
+              "action": "Click",
+              "category": "MissionLanding",
+              "label": "MissionLanding"
+            },
+            "customDimensions": [
+              {
+                "key": "20",
+                "value": "campaignCode: 1"
+              }
+            ],
+            "firebaseParam": [
+              {
+                "key": "PTPInformation",
+                "value": "campaignCode: 1"
+              }
+            ]
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callBindCard() {
+      try {
+        const payload = {
+          "statusCd": "",
+          "isExist": "true",
+          "emciKey": "",
+          "cardRefNo": "",
+          "firstName": "นายประวิทย์",
+          "lastName": "รำวง",
+          "cardUsageLimitSpending": "10000",
+          "cardUsageLimitWithdrawATM": "10000",
+          "cardNickName": "บัตร MRT Student",
+          "availBalance": 100,
+          "ledgerBalance": 220,
+          "paymentAmount": 120,
+          "cardBalanceStatus": "INSUFFICIENT_AMOUNT",
+          "cardType": "BEM_STUDENT",
+          "bindingRefId": "1234567890"
+        }
+        sendMessageBindCard(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callGAOld() {
+      try {
+        const payload = {
+          "event": {
+            "action": "Click",
+            "category": "MissionLanding",
+            "label": "MissionLanding"
+          },
+          "customDimensions": [
+            {
+              "key": "20",
+              "value": "campaignCode: 1"
+            }
+          ],
+          "firebaseParam": [
+            {
+              "key": "PTPInformation",
+              "value": "campaignCode: 1"
+            }
+          ]
+        };
+
+        let platForm = getMobileOperatingSystem()
+        if (platForm == "Android") {
+          const json = JSON.stringify(payload)
+          campaignWeb.gaTagging(json)
+        } else {
+          sendMessage(payload)
+        }
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callShareOld() {
+      try {
+        const payload = { "title": "here is a good game", "icon": "iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAB9KADAAQAAAABAAAB9AAAAACEVKODAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWH...", "message": "here is a good game, https://share.krungThai.com&xxxxxx000001", "url": "https://share.krungThai.com&xxxxxx000001", "command": "share", "campaignCode": "3" };
+        let platForm = getMobileOperatingSystem()
+        if (platForm == "Android") {
+          const json = JSON.stringify(payload)
+          campaignWeb.onReceiveJSCommand(json)
+        } else {
+          sendMessage(payload)
+        }
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callShareNew() {
+      try {
+        const payload = {
+          "command": "share",
+          "content": {
+            "title": "here is a good game",
+            "icon": "iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAB9KADAAQAAAABAAAB9AAAAACEVKODAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWH...",
+            "message": "here is a good game, https://share.krungThai.com&xxxxxx000001",
+            "url": "https://share.krungThai.com&xxxxxx000001",
+            "campaignCode": "3"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function openReferral() {
+      try {
+        const payload = {
+          "command": "ROUTING",
+          "content": {
+            "destination": "REFERRAL",
+            "additionalParams": "",
+            "channel": "PT",
+            "product": "PW",
+            "flowName": "PTP_TO_REFERRAL_LANDING"
+          }
+        };
+        sendMessage(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="home-container" width: 100% display: flex overflow: auto min-height: 100vh align-items: center
+    padding-top: var(--dl-space-space-twounits) padding-left: var(--dl-space-space-twounits) padding-right:
+    var(--dl-space-space-twounits) flex-direction: column justify-content: flex-start>
+    <button onclick="callBackToPrevious()" type="button" class="home-button button">Back</button>
+    <button onclick="callBiller()" class="button">Open Biller list</button>
+    <button onclick="callTopup()" class="button">Open Topup list</button>
+    <button onclick="callPlayCardHome()" class="button">Open PlayCard Home</button>
+    <button onclick="callScanQR()" class="button">Scan QR</button>
+    <button onclick="callGAOld()" class="button">GA - Old</button>
+    <button onclick="callGANew()" class="button">GA - New</button>
+    <button onclick="callShareOld()" class="button">Share - Old</button>
+    <button onclick="callShareNew()" class="button">Share - New</button>
+    <button onclick="openReferral()" class="button">Mission Open Referral</button>
+    <button onclick="callBindCard()" class="button">BindCard</button>
+    <text class="Heading" id="txtDemo"></text>
+  </div>
+</body>
+
+</html>
