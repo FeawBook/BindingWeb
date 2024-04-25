@@ -296,7 +296,57 @@
       }
     }
 
-    function callBindCard() {
+    function callBindCardNoAmount() {
+      try {
+        const payload = {
+          "statusCd": "",
+          "isExist": "true",
+          "emciKey": "",
+          "cardRefNo": "",
+          "firstName": "นายประวิทย์",
+          "lastName": "รำวง",
+          "cardUsageLimitSpending": "10000",
+          "cardUsageLimitWithdrawATM": "10000",
+          "cardNickName": "บัตร MRT Student",
+          "availBalance": 0,
+          "ledgerBalance": 0,
+          "paymentAmount": 0,
+          "cardBalanceStatus": "NO_AMOUNT",
+          "cardType": "BEM_STUDENT",
+          "bindingRefId": "1234567890"
+        }
+        sendMessageBindCard(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callBindCardSufficient() {
+      try {
+        const payload = {
+          "statusCd": "",
+          "isExist": "true",
+          "emciKey": "",
+          "cardRefNo": "",
+          "firstName": "นายประวิทย์",
+          "lastName": "รำวง",
+          "cardUsageLimitSpending": "10000",
+          "cardUsageLimitWithdrawATM": "10000",
+          "cardNickName": "บัตร MRT Student",
+          "availBalance": 100,
+          "ledgerBalance": 50,
+          "paymentAmount": 0,
+          "cardBalanceStatus": "SUFFICIENT_AMOUNT",
+          "cardType": "BEM_STUDENT",
+          "bindingRefId": "1234567890"
+        }
+        sendMessageBindCard(payload)
+      } catch (error) {
+        alert(error)
+      }
+    }
+
+    function callBindCardInsufficient() {
       try {
         const payload = {
           "statusCd": "",
@@ -422,7 +472,9 @@
     <button onclick="callShareOld()" class="button">Share - Old</button>
     <button onclick="callShareNew()" class="button">Share - New</button>
     <button onclick="openReferral()" class="button">Mission Open Referral</button>
-    <button onclick="callBindCard()" class="button">BindCard</button>
+    <button onclick="callBindCardNoAmount()" class="button">BindCard-No amount</button>
+    <button onclick="callBindCardSufficient()" class="button">BindCard-sufficient</button>
+    <button onclick="callBindCardInsufficient()" class="button">BindCard-insufficient</button>
     <text class="Heading" id="txtDemo"></text>
   </div>
 </body>
