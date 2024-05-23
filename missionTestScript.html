@@ -300,7 +300,7 @@
       try {
         const payload = {
           "flow": "BIND_CARD",
-          "isExist": "true",
+          "isExist": true,
           "emciKey": "",
           "cardRefNo": "",
           "firstName": "นายประวิทย์",
@@ -308,9 +308,9 @@
           "cardUsageLimitSpending": "10000",
           "cardUsageLimitWithdrawATM": "10000",
           "cardNickName": "บัตร MRT Student",
-          "availBalance": 0,
-          "ledgerBalance": 0,
-          "paymentAmount": 0,
+          "availBalance": "0",
+          "ledgerBalance": "0",
+          "paymentAmount": "0",
           "cardBalanceStatus": "NO_AMOUNT",
           "cardType": "BEM_STUDENT",
           "bindingRefId": "1234567890"
@@ -325,7 +325,7 @@
       try {
         const payload = {
           "flow": "BIND_CARD",
-          "isExist": "true",
+          "isExist": true,
           "emciKey": "",
           "cardRefNo": "",
           "firstName": "นายประวิทย์",
@@ -333,9 +333,9 @@
           "cardUsageLimitSpending": "10000",
           "cardUsageLimitWithdrawATM": "10000",
           "cardNickName": "บัตร MRT Student",
-          "availBalance": 100,
-          "ledgerBalance": 50,
-          "paymentAmount": 0,
+          "availBalance": "100",
+          "ledgerBalance": "50",
+          "paymentAmount": "0",
           "cardBalanceStatus": "SUFFICIENT_AMOUNT",
           "cardType": "BEM_STUDENT",
           "bindingRefId": "1234567890"
@@ -350,7 +350,7 @@
       try {
         const payload = {
           "flow": "BIND_CARD",
-          "isExist": "true",
+          "isExist": true,
           "emciKey": "",
           "cardRefNo": "",
           "firstName": "นายประวิทย์",
@@ -358,9 +358,9 @@
           "cardUsageLimitSpending": "10000",
           "cardUsageLimitWithdrawATM": "10000",
           "cardNickName": "บัตร MRT Student",
-          "availBalance": 100,
-          "ledgerBalance": 220,
-          "paymentAmount": 120,
+          "availBalance": "100",
+          "ledgerBalance": "220",
+          "paymentAmount": "120",
           "cardBalanceStatus": "INSUFFICIENT_AMOUNT",
           "cardType": "BEM_STUDENT",
           "bindingRefId": "1234567890"
