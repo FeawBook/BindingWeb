@@ -341,10 +341,13 @@
     function callBindCardSufficient() {
       try {
         const payload = {
-          "cardNo": "5201987654321098",
-          "cardExpiryDate": "06/31",
-          "cardType": "MMEMVADLPC",
-          "balance": "120.02"
+          "command": "checkBalance", 
+          "content": {
+            "cardNo": "5201987654321098",
+            "cardExpiryDate": "06/31",
+            "cardType": "MMEMVADLPC",
+            "balance": "120.02" 
+          }
         }
         sendMessageBindCard(payload)
       } catch (error) {
@@ -355,10 +358,13 @@
     function callBindCardInsufficient() {
       try {
         const payload = {
-          "cardNo": "5201987654321098",
-          "cardExpiryDate": "06/31",
-          "cardType": "MMEMVADLPC",
-          "balance": "1000.01"
+          "command": "checkBalance", 
+          "content": {
+            "cardNo": "5201987654321098",
+            "cardExpiryDate": "06/31",
+            "cardType": "MMEMVADLPC",
+            "balance": "1200.02" 
+          }
         }
         sendMessageBindCard(payload)
       } catch (error) {
