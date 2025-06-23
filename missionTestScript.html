@@ -341,21 +341,10 @@
     function callBindCardSufficient() {
       try {
         const payload = {
-          "flow": "BIND_CARD",
-          "isExist": true,
-          "emciKey": "",
-          "cardRefNo": "",
-          "firstName": "นายประวิทย์",
-          "lastName": "รำวง",
-          "cardUsageLimitSpending": "10000",
-          "cardUsageLimitWithdrawATM": "10000",
-          "cardNickName": "บัตร MRT Student",
-          "availBalance": "100",
-          "ledgerBalance": "50",
-          "paymentAmount": "0",
-          "cardBalanceStatus": "SUFFICIENT_AMOUNT",
-          "cardType": "BEM_STUDENT",
-          "bindingRefId": "1234567890"
+          "cardNo": "5201987654321098",
+          "cardExpiryDate": "06/31",
+          "cardType": "MMEMVADLPC",
+          "balance": "120.02"
         }
         sendMessageBindCard(payload)
       } catch (error) {
@@ -366,21 +355,10 @@
     function callBindCardInsufficient() {
       try {
         const payload = {
-          "flow": "BIND_CARD",
-          "isExist": true,
-          "emciKey": "",
-          "cardRefNo": "",
-          "firstName": "นายประวิทย์",
-          "lastName": "รำวง",
-          "cardUsageLimitSpending": "10000",
-          "cardUsageLimitWithdrawATM": "10000",
-          "cardNickName": "บัตร MRT Student",
-          "availBalance": "100",
-          "ledgerBalance": "220",
-          "paymentAmount": "120",
-          "cardBalanceStatus": "INSUFFICIENT_AMOUNT",
-          "cardType": "BEM_STUDENT",
-          "bindingRefId": "1234567890"
+          "cardNo": "5201987654321098",
+          "cardExpiryDate": "06/31",
+          "cardType": "MMEMVADLPC",
+          "balance": "1000.01"
         }
         sendMessageBindCard(payload)
       } catch (error) {
